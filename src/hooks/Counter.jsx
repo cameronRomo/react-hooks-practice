@@ -1,8 +1,16 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Counter = () => {
   const [count, setCount] = useState(0);
   const [name, setName] = useState("");
+
+  useEffect(() => {
+    document.title = `${name} has clicked ${count} times`;
+
+    return () => {
+      console.log("Clean up!");
+    };
+  }, []);
 
   return (
     <>
